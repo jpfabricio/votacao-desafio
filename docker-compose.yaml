@@ -1,0 +1,12 @@
+version: '1'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: votacao
+    ports:
+      - "5433:5433"
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: admin
