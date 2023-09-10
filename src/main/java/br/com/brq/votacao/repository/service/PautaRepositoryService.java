@@ -22,6 +22,6 @@ public class PautaRepositoryService {
     }
 
     public Pauta buscaPorNome(final String nome) {
-        return repository.findByNome(nome).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "ão existe uma pauta com o nome informado!"));
+        return repository.findByNome(nome).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não existe uma pauta com o nome informado!"));
     }
 }
