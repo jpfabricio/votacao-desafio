@@ -24,7 +24,7 @@ public class VotoService {
     private PautaRepositoryService pautaRepositoryService;
 
     public Voto novo(String associadoId, TipoVoto tipoVoto, String pautaId) {
-        Voto voto = new Voto(tipoVoto, associadoRepositoryService.buscaPorId(associadoId), pautaRepositoryService.buscaPorId(pautaId));
+        Voto voto = new Voto(tipoVoto, associadoRepositoryService.buscaPorId(associadoId).getId(), pautaRepositoryService.buscaPorId(pautaId).getId());
         pautaService.contabilizaVoto(pautaId, voto);
         votoRepositoryService.salva(voto);
         return voto;

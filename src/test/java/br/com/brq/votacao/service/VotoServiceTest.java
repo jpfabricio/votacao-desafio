@@ -45,7 +45,5 @@ public class VotoServiceTest {
         Voto voto = votoService.novo("123456", TipoVoto.SIM, "654321");
         assertNotNull(voto);
         assertEquals(voto.getTipoVoto(), TipoVoto.SIM);
-        assertEquals(voto.getAssociado().getCpf(), "0000");
-        assertEquals(voto.getPauta().getNome(), "Pauta Teste");
     }
 }

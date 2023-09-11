@@ -20,14 +20,14 @@ public class Voto {
     @Field(name = "tipo_voto")
     private TipoVoto tipoVoto;
 
-    private Associado associado;
+    private String associadoId;
 
-    private Pauta pauta;
+    private String pautaId;
 
 
-    public Voto(TipoVoto tipoVoto, Associado associado, Pauta pauta) {
+    public Voto(TipoVoto tipoVoto, String associadoId, String pautaId) {
         this.tipoVoto = tipoVoto;
-        this.associado = associado;
-        this.pauta = pauta;
+        this.associadoId = associadoId;
+        this.pautaId = pautaId;
     }
 }

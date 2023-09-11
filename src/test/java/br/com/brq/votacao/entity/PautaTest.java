@@ -42,7 +42,7 @@ public class PautaTest {
 
     @Test
     public void validaContabilizaResultado(){
-        pauta.adicionaVoto(new Voto(TipoVoto.SIM, new Associado("45696563"), pauta));
+        pauta.adicionaVoto(new Voto(TipoVoto.SIM, new Associado("45696563").getId(), pauta.getId()));
         pauta.contabilizaResultado();
         assertNotNull(pauta.getResultado());
         assertEquals(pauta.getResultado().getTotalVotos(), 1);
@@ -52,7 +52,7 @@ public class PautaTest {
 
     @Test
     public void validaAdiconaVoto(){
-        pauta.adicionaVoto(new Voto(TipoVoto.SIM, new Associado("45696563"), pauta));
+        pauta.adicionaVoto(new Voto(TipoVoto.SIM, new Associado("45696563").getId(), pauta.getId()));
         assertFalse(pauta.getVotos().isEmpty());
     }
 

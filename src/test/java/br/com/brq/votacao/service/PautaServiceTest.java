@@ -60,7 +60,7 @@ public class PautaServiceTest {
         when(repository.salva(any(Pauta.class))).thenAnswer(answer -> {
             return answer.getArgument(0);
         });
-        this.pauta = pautaUseCase.contabilizaVoto(this.pauta.getId(), new Voto(TipoVoto.SIM, new Associado(""), pauta));
+        this.pauta = pautaUseCase.contabilizaVoto(this.pauta.getId(), new Voto(TipoVoto.SIM, new Associado("").getId(), pauta.getId()));
         assertFalse(this.pauta.getVotos().isEmpty());
     }
 }
