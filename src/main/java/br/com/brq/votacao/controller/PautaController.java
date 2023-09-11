@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Validated
 @Configuration
 @RestController
-@RequestMapping("/pauta")
+@RequestMapping("/v1/pauta")
 public class PautaController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class PautaController {
     private PautaFilter filter;
 
     @ResponseBody
-    @PostMapping("/nova")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Cria uma nova pauta")
     public Pauta nova(@RequestParam(name = "nome", required = true) @NotEmpty(message = "Nome de pauta é obrigatório!") final String nome) throws BadRequest {

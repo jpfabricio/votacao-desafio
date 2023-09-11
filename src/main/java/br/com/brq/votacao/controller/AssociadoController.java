@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @Configuration
 @RestController
-@RequestMapping("/associado")
+@RequestMapping("/v1/associado")
 public class AssociadoController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class AssociadoController {
     private AssociadoFilter filter;
 
     @ResponseBody
-    @PostMapping("/novo")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Cria um novo associado")
     public Associado novo(@RequestParam(name = "cpf", required = true) @NotBlank(message = "CPF é obrigatório!") final String cpf) throws BadRequest, BadGateway {

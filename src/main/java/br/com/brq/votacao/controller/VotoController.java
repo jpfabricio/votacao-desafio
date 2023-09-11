@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @Configuration
 @RestController
-@RequestMapping("/voto")
+@RequestMapping("/v1/voto")
 public class VotoController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class VotoController {
     private VotoFilter filter;
 
     @ResponseBody
-    @PostMapping("/novo")
+    @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Cria um novo voto em uma pauta")
     public Voto novo(@RequestParam(name = "associado_id", required = true) @NotBlank(message = "ID de associado é obrigatório!") final String associadoId,
