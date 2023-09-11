@@ -14,7 +14,7 @@
     <name>votacao-desafio</name>
     <description>Serviço para votação em pautas por associados.</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <spring-cloud.version>2022.0.0</spring-cloud.version>
     </properties>
     <dependencies>
