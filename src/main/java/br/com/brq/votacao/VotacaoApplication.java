@@ -10,6 +10,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @Slf4j
+@EnableKafka
 @EnableFeignClients
 @SpringBootApplication
 public class VotacaoApplication {
@@ -17,5 +18,10 @@ public class VotacaoApplication {
 	private static Logger logger = LoggerFactory.getLogger(VotacaoApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(VotacaoApplication.class, args);
+	}
+
+	@KafkaListener(topics = "resultado-pautas-topic", groupId = "votacao")
+	public void resultadoPautaListener(Object message) {
+		logger.info("Sessão de pauta finalizada: " + message);
 	}
 }

@@ -6,6 +6,7 @@ import br.com.brq.votacao.model.Voto;
 import br.com.brq.votacao.repository.service.PautaRepositoryService;
 import br.com.brq.votacao.util.CodigosErros;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,6 +20,9 @@ public class PautaService {
 
     @Autowired
     private PautaRepositoryService repositoryService;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public Pauta nova(String nome) {
         return repositoryService.salva(new Pauta(nome));
@@ -51,6 +55,7 @@ public class PautaService {
                 Pauta pauta = repositoryService.buscaPorId(pautaId);
                 pauta.finalizaSessao();
                 repositoryService.salva(pauta);
+                kafkaTemplate.send("resultado-pautas-topic", pauta.getResultado());
             }
         };
     }
