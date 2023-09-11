@@ -1,8 +1,8 @@
 package br.com.brq.votacao.controller.handler;
 
 import br.com.brq.votacao.controller.dto.ErroDTO;
+import br.com.brq.votacao.exception.BadGateway;
 import br.com.brq.votacao.exception.BadRequest;
-import br.com.brq.votacao.exception.FeignException;
 import br.com.brq.votacao.util.CodigosErros;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
@@ -36,10 +36,10 @@ public class RouteExceptionHandler {
     }
 
     @ResponseBody
-    @ExceptionHandler(FeignException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    ErroDTO feignException(FeignException ex) {
-        return ex.getErro();
+    @ExceptionHandler(BadGateway.class)
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    BadGateway feignException(BadGateway ex) {
+        return ex;
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -10,6 +10,7 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @Slf4j
+@EnableFeignClients
 @SpringBootApplication
 public class VotacaoApplication {
 

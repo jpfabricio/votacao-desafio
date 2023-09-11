@@ -1,5 +1,6 @@
 package br.com.brq.votacao.controller;
 
+import br.com.brq.votacao.exception.BadGateway;
 import br.com.brq.votacao.exception.BadRequest;
 import br.com.brq.votacao.model.Associado;
 import br.com.brq.votacao.service.AssociadoService;
@@ -28,7 +29,7 @@ public class AssociadoController {
     @PostMapping("/novo")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Cria um novo associado")
-    public Associado novo(@RequestParam(name = "cpf", required = true) @NotBlank(message = "CPF é obrigatório!") final String cpf) throws BadRequest {
+    public Associado novo(@RequestParam(name = "cpf", required = true) @NotBlank(message = "CPF é obrigatório!") final String cpf) throws BadRequest, BadGateway {
         filter.validaNovoAssociado(cpf);
         return service.novo(cpf);
     }

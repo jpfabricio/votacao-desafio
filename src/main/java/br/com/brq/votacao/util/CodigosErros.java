@@ -23,6 +23,12 @@ public class CodigosErros {
     public static final Map<String, Object> VOTACAO_AINDA_ATIVA = Map
             .of("mensagem", "A sessao ainda não acabou ", "codigo", 6);
 
+    public static final Map<String, Object> CPF_INVALIDO = Map
+            .of("mensagem", "CPF inválido, não está apto para voto!", "codigo", 7);
+
+    public static final Map<String, Object> ERRO_NA_CHAMADA_EXTERNA_VALIDA_CPF = Map
+            .of("mensagem", "Erro ao validar CPF!", "codigo", 8);
+
     public static final int ERRO_DE_VALIDACAO_DO_DTO = 0;
 
     public static String getMensagem(Map<String, Object> map){
