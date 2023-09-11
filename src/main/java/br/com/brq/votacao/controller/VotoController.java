@@ -15,9 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @Validated
 @Configuration
 @RestController
@@ -42,16 +39,6 @@ public class VotoController {
                      @RequestParam(name = "pauta_id", required = true) @Valid @NotBlank(message = "ID de pauta é obrigatório!") final String pautaId) throws BadRequest {
         filter.validaNovoVoto(pautaId, associadoId);
         return service.novo(associadoId, voto, pautaId);
-    }
-
-    @ResponseBody
-    @PostMapping("/teste")
-    @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Cria um novo voto em uma pauta")
-    public Voto busca(@RequestParam(name = "associado_id", required = true) @NotBlank(message = "ID de associado é obrigatório!") final String associadoId,
-                            @RequestParam(name = "pauta_id", required = true) @Valid @NotBlank(message = "ID de pauta é obrigatório!") final String pautaId) throws BadRequest {
-        Optional<Voto> user = repository.findByAssociadoIdAndPautaId(associadoId, pautaId);
-        return user.get();
     }
 
 }
